@@ -1,6 +1,5 @@
 # Lab-1_C-1
 
-# 1.
 # store a full sentence in a variable.
 sentence = "Full sentence in a variable."
 # print length
