@@ -2,20 +2,11 @@
 
 # Create function that returns True of False
 
-number = 10
+number = 7
+
 
 def is_even(number):
-    if number % 2 == 0:
-        return True
-    else:
-        return False
+    return number % 2 == 0
+
 
 print(is_even(number))
-
-
-
-
-
-
-
-
