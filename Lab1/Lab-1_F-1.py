@@ -1,4 +1,4 @@
-# Lab-1_E-4
+# Lab-1_F-1
 
 input_seconds = int(input("Input seconds: "))
 
