@@ -1,4 +1,5 @@
 # Lab-5_B-2
+
 # Write average(*numbers). Decide what should happen when no numbers are supplied.
 
 def average(*numbers):
