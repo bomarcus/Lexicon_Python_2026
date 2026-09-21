@@ -1,12 +1,15 @@
 # Lab-5_A-4
 
-# nested function and demo simple enclosing scope lookup
+# Create a nested function and demonstrate a simple enclosing-scope lookup.
 
-var = 1
-breakpoint()
-def func_1():
-    def func_2():
-        return
+def outer():
+    outside = "outside"
 
-print
+    def inner():
+        inside = "inside"
+        print(inside)
+        print(outside)
+    inner()
 
+
+outer()  # prints outside
