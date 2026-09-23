@@ -1,6 +1,6 @@
 # Lab-8_A-2
 
-# Create a BadTeam class with name and a default parameter members=[]. Add an add_member() method.
+# Create two BadTeam objects without providing a members list. Add a member to only one team and print both lists. Explain in a comment what happened.
 
 class BadTeam:
     def __init__(self, name, members=[]):
@@ -13,7 +13,7 @@ class BadTeam:
 team1 = BadTeam("bad team 1")
 team2 = BadTeam("bad team 2")
 
-team1.add_member("first")
+team1.add_member("first member")
 
 print(team1.name)
 print(team1.members)
