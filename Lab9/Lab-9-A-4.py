@@ -6,13 +6,16 @@ class EmailNotification:
     def send(self):
         return "Email"
 
+
 class SMSNotification:
     def send(self):
         return "SMS"
 
+
 class PushNotification:
     def send(self):
         return "Push"
+
 
 email = EmailNotification()
 sms = SMSNotification()
@@ -26,4 +29,4 @@ notifications = [
 
 
 for notification in notifications:
-    print (notification.send())
+    print(notification.send())
