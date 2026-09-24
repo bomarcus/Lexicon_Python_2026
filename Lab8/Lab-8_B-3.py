@@ -1,6 +1,6 @@
-# Lab-8_B-3
+# Lab-8_C-1
 
-# Add a method to Movie that returns whether the movie is highly rated. 
+# Add a method to Movie that returns whether the movie is highly rated.
 # Choose a sensible rating threshold.
 
 class Movie:
@@ -13,8 +13,9 @@ class Movie:
         if self.rating > 5:
             return "Pretty good!"
         else:
-           return  "pretty bad!"
-    
+            return "pretty bad!"
+
+
 movie = Movie("Persona", "Ingmar Bergman", 10, )
 
 print(movie.title, movie.director, movie.rating, movie.rating_eval())
