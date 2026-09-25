@@ -1,6 +1,6 @@
 # Lab-9_F-3
 
-# Add __str__ to Account
+# Create SavingsAccount(Account) with an additional interest_rate attribute. Use super() in __init__.
 
 class Account:
     def __init__(self, owner, balance):
