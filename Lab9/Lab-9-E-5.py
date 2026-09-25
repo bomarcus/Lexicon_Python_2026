@@ -1,3 +1,5 @@
+# Lab-9_E-4
+
 # Use str() on one Product object, store the result in a variable and print its type
 
 # Create at least three Product objects and print them.
