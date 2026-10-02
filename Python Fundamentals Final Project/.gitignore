@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.coverage
+
+# Environment/secrets
+.env
+
+/docs/Python Fundamentals Final Project.pdf
+
+.ruff_cache/
+
+/tests/
+
+/extras/
+
+/Plan/*
+!/Plan/flowchart.md
