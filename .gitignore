@@ -1,7 +1,29 @@
-.vscode/
-__pycache__/
+# Personal experiments in any subcourse
+**/mao/
+
+# PDFs
+*.pdf
+
+# Python-generated files and environments
+**/__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+
+# Environment and secrets
+.env
+
+# macOS
 .DS_Store
 
-*.pdf
-/mao/
-
+# Project-specific exclusions
+/Python Fundamentals/Python Fundamentals Final Project/tests/
+/Python Fundamentals/Python Fundamentals Final Project/extras/
+/Python Fundamentals/Python Fundamentals Final Project/Plan/*
+!/Python Fundamentals/Python Fundamentals Final Project/Plan/flowchart.md
