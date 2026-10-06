@@ -36,8 +36,8 @@ LAB1:
 
 
 Bonus questions:
-Show products that are Clothing or Shoes and cost more than 1000 kr. Hint: you need brackets. Try without them too: why is the answer different? (3 rows)
-For every product in stock, show name, price, stock and the total value of the stock (price × stock) as stock_value. Highest value first. (10 rows)
-Which customers have a first name with exactly 4 letters? Hint: _ in LIKE means "exactly one character". (4 rows)
-Sort the products by price, cheapest first, and show only products number 6 to 10. Hint: look up OFFSET. (5 rows)
-Show customers who joined before 2025 and don't live in Uppsala. Sort by city, and by last name within the same city. (4 rows)
+11. Show products that are Clothing or Shoes and cost more than 1000 kr. Hint: you need brackets. Try without them too: why is the answer different? (3 rows)
+12. For every product in stock, show name, price, stock and the total value of the stock (price × stock) as stock_value. Highest value first. (10 rows)
+13. Which customers have a first name with exactly 4 letters? Hint: _ in LIKE means "exactly one character". (4 rows)
+14. Sort the products by price, cheapest first, and show only products number 6 to 10. Hint: look up OFFSET. (5 rows)
+15. Show customers who joined before 2025 and don't live in Uppsala. Sort by city, and by last name within the same city. (4 rows)

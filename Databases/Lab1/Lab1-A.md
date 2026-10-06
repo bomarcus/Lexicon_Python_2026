@@ -18,3 +18,10 @@ SELECT * FROM customers ORDER BY joined_date LIMIT  3;
 SELECT * FROM customers  WHERE city IN ('Stockholm', 'Göteborg');
 10.
 SELECT name AS product, price AS price_sek FROM products;
+
+-
+
+11.
+SELECT * FROM products WHERE (category = 'Clothing' OR category =  'Shoes') AND price >= 1000;
+12.
+
