@@ -3,9 +3,10 @@
 
 # Personal experiments in any subcourse
 **/mao/
+**/mao.*
 
 # PDFs
-*.pdf
+**.pdf
 
 # Python-generated files and environments
 **/__pycache__/
@@ -18,6 +19,7 @@ venv/
 .mypy_cache/
 .ruff_cache/
 .coverage
+
 
 # Environment and secrets
 .env
