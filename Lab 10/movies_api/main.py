@@ -1,5 +1,3 @@
-# 1
-
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 
@@ -37,7 +35,6 @@ def list_movies(director: str | None = None, year: int | None = None):
     return result
 
 
-# 2
 @app.get("/movies/{movie_id}")
 def get_movies(movie_id: int):
     for movie in movies:
@@ -46,3 +43,23 @@ def get_movies(movie_id: int):
     raise HTTPException(
         status_code=404
     )  # gives 404 Undocumented Error: Not Found or For 'movie_id': Value must be an integer.
+
+
+# add movie
+class Movie(BaseModel):
+    title: str
+    director: str
+    year: int
+
+
+@app.post("/movies", status_code=201)
+def create_movie(movie: Movie):
+    new_id = max((m["id"] for m in movies), default=0) + 1
+    new_movie = {
+        "id": new_id,
+        "title": movie.title,
+        "director": movie.director,
+        "year": movie.year,
+    }
+    movies.append(new_movie)
+    return new_movie
