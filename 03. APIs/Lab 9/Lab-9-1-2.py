@@ -1,3 +1,5 @@
+# Lab-9-2
+
 from api_client import get_json
 
 categories = get_json("https://fakestoreapi.com/products/categories")
