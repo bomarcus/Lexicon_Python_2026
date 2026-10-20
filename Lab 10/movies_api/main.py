@@ -77,3 +77,18 @@ def create_movie(movie: Movie):
     }
     movies.append(new_movie)
     return new_movie
+
+
+@app.put("/movies/{movie_id}")
+def replace_movie(movie_id: int, movie: Movie):
+    existing = find_movie(movie_id)
+    existing["title"] = movie.title
+    existing["director"] = movie.director
+    existing["year"] = movie.year
+    return existing
+
+
+@app.delete("/movies/{movie_id}", status_code=204)
+def delete_movie(movie_id: int):
+    existing = find_movie(movie_id)
+    movies.remove(existing)
