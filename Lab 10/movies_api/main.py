@@ -22,6 +22,21 @@ movies = [
 ]
 
 
+# 5
+def find_movie(movie_id: int):
+    for movie in movies:
+        if movie["id"] == movie_id:
+            return movie
+    raise HTTPException(status_code=404, detail="movie not found")
+
+
+# add movie
+class Movie(BaseModel):
+    title: str
+    director: str
+    year: int
+
+
 # return the movie list.
 @app.get("/movies")
 def list_movies(director: str | None = None, year: int | None = None):
@@ -35,23 +50,22 @@ def list_movies(director: str | None = None, year: int | None = None):
     return result
 
 
+# @app.get("/movies/{movie_id}")
+# def get_movies(movie_id: int):
+#     for movie in movies:
+#         if movie["id"] == movie_id:
+#             return movie
+#     raise HTTPException(
+#         status_code=404
+#     )  # gives 404 Undocumented Error: Not Found or For 'movie_id': Value must be an integer.
+
+
 @app.get("/movies/{movie_id}")
-def get_movies(movie_id: int):
-    for movie in movies:
-        if movie["id"] == movie_id:
-            return movie
-    raise HTTPException(
-        status_code=404
-    )  # gives 404 Undocumented Error: Not Found or For 'movie_id': Value must be an integer.
+def get_movie(movie_id: int):
+    return find_movie(movie_id)
 
 
-# add movie
-class Movie(BaseModel):
-    title: str
-    director: str
-    year: int
-
-
+# 4
 @app.post("/movies", status_code=201)
 def create_movie(movie: Movie):
     new_id = max((m["id"] for m in movies), default=0) + 1
