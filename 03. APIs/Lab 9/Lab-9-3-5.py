@@ -25,3 +25,17 @@ print(response.headers["X-RateLimit-Limit"])
 
 response = requests.get(url, timeout=5)
 print(response.headers["X-RateLimit-Limit"])
+
+
+# Server said no: 401
+# Traceback (most recent call last):
+#   File "/Users/mao/Documents/Github/LEXICON/Lexicon_Python_2026/03. APIs/Lab 9/Lab-9-3-5.py", line 24, in <module>
+#     print(response.headers["X-RateLimit-Limit"])
+#           ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+#   File "/Library/Frameworks/Python.framework/Versions/3.14/lib/python3.14/site-packages/requests/structures.py", line 65, in __getitem__
+#     return self._store[key.lower()][1]
+#            ~~~~~~~~~~~^^^^^^^^^^^^^
+# KeyError: 'x-ratelimit-limit'
+
+## 401 Unauthorized
+## 403 Forbidden
