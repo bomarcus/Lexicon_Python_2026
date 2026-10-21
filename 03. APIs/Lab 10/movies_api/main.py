@@ -1,8 +1,16 @@
-from fastapi import FastAPI, HTTPException
+# ---- imports ----
+import os
+
+from dotenv import load_dotenv
+from fastapi import Depends, FastAPI, Header, HTTPException
 from pydantic import BaseModel
 
-app = FastAPI()
+# --- config ---
+load_dotenv()
+API_KEY = os.getenv("API_KEY")
 
+# ---- app + data ----
+app = FastAPI()
 
 movies = [
     {
@@ -22,7 +30,20 @@ movies = [
 ]
 
 
-# 5
+# ---- models ----
+class Movie(BaseModel):
+    title: str
+    director: str
+    year: int
+
+
+class MovieUpdate(BaseModel):
+    title: str | None = None
+    director: str | None = None
+    year: int | None = None
+
+
+# ---- helpers ----
 def find_movie(movie_id: int):
     for movie in movies:
         if movie["id"] == movie_id:
@@ -30,14 +51,12 @@ def find_movie(movie_id: int):
     raise HTTPException(status_code=404, detail="movie not found")
 
 
-# add movie
-class Movie(BaseModel):
-    title: str
-    director: str
-    year: int
+def check_key(x_api_key: str | None = Header(default=None)):
+    if x_api_key != API_KEY or API_KEY is None:
+        raise HTTPException(status_code=401)
 
 
-# return the movie list.
+# ---- routes: GET ----
 @app.get("/movies")
 def list_movies(director: str | None = None, year: int | None = None):
     result = movies
@@ -50,23 +69,13 @@ def list_movies(director: str | None = None, year: int | None = None):
     return result
 
 
-# @app.get("/movies/{movie_id}")
-# def get_movies(movie_id: int):
-#     for movie in movies:
-#         if movie["id"] == movie_id:
-#             return movie
-#     raise HTTPException(
-#         status_code=404
-#     )  # gives 404 Undocumented Error: Not Found or For 'movie_id': Value must be an integer.
-
-
 @app.get("/movies/{movie_id}")
 def get_movie(movie_id: int):
     return find_movie(movie_id)
 
 
-# 4
-@app.post("/movies", status_code=201)
+# ---- routes: POST ----
+@app.post("/movies", status_code=201, dependencies=[Depends(check_key)])
 def create_movie(movie: Movie):
     new_id = max((m["id"] for m in movies), default=0) + 1
     new_movie = {
@@ -79,7 +88,8 @@ def create_movie(movie: Movie):
     return new_movie
 
 
-@app.put("/movies/{movie_id}")
+# ---- routes: PUT ----
+@app.put("/movies/{movie_id}", dependencies=[Depends(check_key)])
 def replace_movie(movie_id: int, movie: Movie):
     existing = find_movie(movie_id)
     existing["title"] = movie.title
@@ -88,7 +98,21 @@ def replace_movie(movie_id: int, movie: Movie):
     return existing
 
 
-@app.delete("/movies/{movie_id}", status_code=204)
+# ---- routes: PATCH ----
+@app.patch("/movies/{movie_id}", dependencies=[Depends(check_key)])
+def patch_movie(movie_id: int, changes: MovieUpdate):
+    existing = find_movie(movie_id)
+    existing.update(changes.model_dump(exclude_unset=True))
+    return existing
+
+
+# ---- routes: DELETE ----
+@app.delete("/movies/{movie_id}", status_code=204, dependencies=[Depends(check_key)])
 def delete_movie(movie_id: int):
     existing = find_movie(movie_id)
     movies.remove(existing)
+
+
+# 2.4
+# PUT for updates to all fields in an entry
+# PATCH for uptades to specific fields in an entry
