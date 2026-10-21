@@ -62,8 +62,12 @@ user_input = input("input city:")
 city = find_city(user_input)
 if city is None:
     print("city not found")
+
 else:
     weather = get_weather(city["latitude"], city["longitude"])
-    print(
-        f" {city['name']}, {city['country']}, has a temperature of {weather['temperature_2m']}°C, and a wind of {weather['wind_speed_10m']}km/h"
-    )
+    if weather is None:
+        print("weather not found")
+    else:
+        print(
+            f" {city['name']}, {city['country']}, has a temperature of {weather['temperature_2m']}°C, and a wind of {weather['wind_speed_10m']}km/h"
+        )

@@ -19,5 +19,8 @@ response = get_json(
     headers=headers,
 )
 
-for repo in response:
-    print(repo["name"])
+if response is None:
+    print("None")
+else:
+    for repo in response:
+        print(repo["name"])
