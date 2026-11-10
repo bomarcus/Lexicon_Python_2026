@@ -32,3 +32,7 @@ venv/
 /Python Fundamentals/Python Fundamentals Final Project/extras/
 /Python Fundamentals/Python Fundamentals Final Project/Plan/*
 !/Python Fundamentals/Python Fundamentals Final Project/Plan/flowchart.md
+
+# Teacher lecture notebooks and course data
+**/demo*.ipynb
+**/listings.csv
