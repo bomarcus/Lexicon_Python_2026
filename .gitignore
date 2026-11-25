@@ -36,3 +36,9 @@ venv/
 # Teacher lecture notebooks and course data
 **/demo*.ipynb
 **/listings.csv
+
+**/listings_clean.csv
+
+# Unused project datasets
+**/Project/data/birdstrikes/
+**/Project/data/flights/
